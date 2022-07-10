@@ -23,7 +23,7 @@ class WelcomeMod(loader.Module):
             return
         state.remove(message.chat_id)
         self.db.set("AutoWarn", "ids", state)
-        await message.respond("<b>Автоварн выключены в этом чате!</b>")
+        await message.respond("<b>Автоварн+автомут выключены в этом чате!</b>")
         await message.delete()
         return
 
