@@ -5,14 +5,14 @@ from telethon.tl.types import TypeChannelParticipantsFilter, ChannelParticipants
 
 
 class WelcomeMod(loader.Module):
-    """Автоварн юзеров за Leave/AFK с использованием Lucifer bot"""
+    """Автоварн+автомут юзеров за Leave/AFK"""
     strings = {'name': 'AutoWarn'}
 
     async def client_ready(self, client, db):
         self.db = db
 
     async def wcmd(self, message):
-        """ переключатель режима судной ночи(вкл/выкл автоварн короче)"""
+        """вкл/выкл автоварн+автомут"""
         state = self.db.get("AutoWarn", "ids", [])
 
         if message.chat_id not in state:
@@ -23,7 +23,7 @@ class WelcomeMod(loader.Module):
             return
         state.remove(message.chat_id)
         self.db.set("AutoWarn", "ids", state)
-        await message.respond("<b>Автоварн+автомут выключены в этом чате!</b>")
+        await message.respond("<b>Автоварн выключены в этом чате!</b>")
         await message.delete()
         return
 
