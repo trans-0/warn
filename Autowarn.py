@@ -23,7 +23,7 @@ class WelcomeMod(loader.Module):
             return
         state.remove(message.chat_id)
         self.db.set("AutoWarn", "ids", state)
-        await message.respond("<b>Автоварн выключен в этом чате!</b>")
+        await message.respond("<b>Автоварн+автомут выключены в этом чате!</b>")
         await message.delete()
         return
 
@@ -49,7 +49,7 @@ class WelcomeMod(loader.Module):
                     # if uid in admin_ids:
                     #     return
                     # else:
-                    await message.respond(f".warn {str(uid)} AFK")
+                    await message.respond(f".mute {str(uid)} 1h AFK")
 
         if ('гнетущей' in message.raw_text.split()) or ('убежал' in message.raw_text.split()):
             msgs = []
